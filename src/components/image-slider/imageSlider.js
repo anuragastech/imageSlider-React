@@ -2,26 +2,27 @@ import React, { useState, useEffect } from "react";
 
 const ImageSlider = ({ url, limit }) => {
   const [images, setImages] = useState([]);
-  // const [currentSlider, setCurrentSlider] = useState(0);
-  const [errorMsg, setErroMsg] = useState([null]);
+  const [errorMsg, setErrorMsg] = useState(null);
   const [loading, setLoading] = useState(false);
+
   const fetchImages = async (getUrl) => {
+    setLoading(true);
     try {
       const response = await fetch(getUrl);
       const data = await response.json();
       if (data) {
-        setImages(data);
+        setImages(data.slice(0, limit)); // Apply limit to the images if provided
         setLoading(false);
       }
     } catch (e) {
-        setErroMsg (e.message);
+      setErrorMsg(e.message);
       setLoading(false);
-
     }
   };
+
   useEffect(() => {
     if (url !== "") fetchImages(url);
-  }, [url, limit]);
+  }, [url]);
 
   if (loading) {
     return <div>Loading data! Please wait...</div>;
@@ -31,9 +32,21 @@ const ImageSlider = ({ url, limit }) => {
     return <div>Error occurred! {errorMsg}</div>;
   }
 
-
-  return 
-  <div className="ccontainer"></div>;
+  return (
+    <div className="container">
+      {images && images.length ? (
+        images.map((imageItem) => (
+          <img
+            key={imageItem.id}
+            alt={imageItem.author}
+            src={imageItem.download_url}
+          />
+        ))
+      ) : (
+        <div>No images found</div>
+      )}
+    </div>
+  );
 };
 
 export default ImageSlider;
