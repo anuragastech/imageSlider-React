@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 const ImageSlider = ({ url, limit }) => {
   const [images, setImages] = useState([]);
-  const [currentSlider, setCurrentSlider] = useState(0);
+  // const [currentSlider, setCurrentSlider] = useState(0);
   const [errorMsg, setErroMsg] = useState([null]);
   const [loading, setLoading] = useState(false);
   const fetchImages = async (getUrl) => {
@@ -19,18 +19,21 @@ const ImageSlider = ({ url, limit }) => {
 
     }
   };
-
   useEffect(() => {
     if (url !== "") fetchImages(url);
-  }, [url]);
+  }, [url, limit]);
 
-  if(loading){
-    return <div>Lo1ading data !please wait</div>
+  if (loading) {
+    return <div>Loading data! Please wait...</div>;
   }
 
-  if(errorMsg !== null){
-    return <div>Error occured ! {errorMsg}</div>
+  if (errorMsg !== null) {
+    return <div>Error occurred! {errorMsg}</div>;
   }
 
-  return <div className="ccontainer"></div>;
+
+  return 
+  <div className="ccontainer"></div>;
 };
+
+export default ImageSlider;
