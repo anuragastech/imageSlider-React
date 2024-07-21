@@ -1,17 +1,23 @@
 {
-  "name": "imageslider",
+  "name": "myapp",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://anuragastech.github.io/imageSlider-React",
   "dependencies": {
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
+    "react-router-dom": "^6.24.1",
     "react-scripts": "0.9.5"
   },
-  "devDependencies": {},
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+ "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.1.1"
   }
 }
