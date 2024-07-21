@@ -1,0 +1,39 @@
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+    background-color: #f4f4f4;
+  }
+  
+  .container img {
+    margin: 10px;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .container img:hover {
+    transform: scale(1.05);
+  }
+  
+  .loading, .error, .no-images {
+    text-align: center;
+    font-size: 18px;
+    color: #333;
+  }
+  
+  .loading {
+    color: #007bff;
+  }
+  
+  .error {
+    color: #dc3545;
+  }
+  
+  .no-images {
+    color: #6c757d;
+  }
+  
