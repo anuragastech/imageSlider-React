@@ -29,6 +29,7 @@ const ImageSlider = ({ url, limit }) => {
     return <div>Loading data! Please wait...</div>;
   }
 
+  
   if (errorMsg !== null) {
     return <div>Error occurred! {errorMsg}</div>;
   }
@@ -44,7 +45,7 @@ const ImageSlider = ({ url, limit }) => {
           />
         ))
 
-        
+
       ) : (
         <div>No images found</div>
       )}
